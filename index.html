@@ -1542,6 +1542,16 @@
       margin: 0 auto 1.25rem;
       line-height: 1.5;
     }
+    /* Skeleton Loading */
+    @keyframes skeleton-loading {
+      0% { background-color: var(--bg-tertiary); }
+      50% { background-color: var(--border-color); }
+      100% { background-color: var(--bg-tertiary); }
+    }
+    .skeleton {
+      animation: skeleton-loading 1.2s infinite ease-in-out;
+      border-radius: var(--radius-sm);
+    }
   </style>
 </head>
 
@@ -2564,6 +2574,51 @@
       pelaporan: document.getElementById('view-pelaporan')
     };
 
+    // Render efek skeleton saat memuat data
+    function renderSkeleton() {
+      const skeletonCard = `
+        <div class="card" style="padding:15px; margin-bottom:15px; background:var(--bg-secondary);">
+          <div class="skeleton" style="height:20px; width:40%; margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:15px; width:80%; margin-bottom:10px;"></div>
+          <div class="skeleton" style="height:15px; width:60%; margin-bottom:15px;"></div>
+          <div style="display:flex; gap:10px;">
+            <div class="skeleton" style="height:25px; width:60px; border-radius:20px;"></div>
+            <div class="skeleton" style="height:25px; width:60px; border-radius:20px;"></div>
+          </div>
+        </div>`;
+      
+      const skeletons = skeletonCard.repeat(3);
+
+      // Dashboard list
+      const dashList = document.getElementById('recent-content-list');
+      if (dashList) dashList.innerHTML = `<div class="grid">${skeletons}</div>`;
+      
+      // Manajemen list
+      const cpList = document.getElementById('content-plan-list');
+      if (cpList) cpList.innerHTML = skeletons;
+      
+      // Kanban list
+      CONFIG.STATUSES.forEach(s => {
+        const col = document.getElementById(`kanban-col-${s.value.replace(/\\s+/g, '-')}`);
+        if (col) col.innerHTML = skeletonCard.repeat(2);
+      });
+      
+      // Pelaporan Table
+      const tbody = document.getElementById('pelaporan-tbody');
+      if (tbody) {
+        tbody.innerHTML = Array(3).fill(0).map(() => `
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding:10px;"><div class="skeleton" style="height:15px; width:80%;"></div></td>
+            <td style="padding:10px;"><div class="skeleton" style="height:15px; width:80%;"></div></td>
+            <td style="padding:10px;"><div class="skeleton" style="height:15px; width:80%;"></div></td>
+            <td style="padding:10px;"><div class="skeleton" style="height:15px; width:80%;"></div></td>
+            <td style="padding:10px;"><div class="skeleton" style="height:15px; width:100%;"></div></td>
+            <td style="padding:10px;"><div class="skeleton" style="height:25px; width:60px; margin:0 auto; border-radius:20px;"></div></td>
+          </tr>
+        `).join('');
+      }
+    }
+
     // Fungsi Muat Ulang Data & Render Seluruh UI (Tanpa Bar Loading, hanya Ikon Refresh Berputar)
     async function refreshData() {
       const badge = document.getElementById('active-sheet-badge');
@@ -2578,6 +2633,7 @@
       }
 
       setRefreshLoading(true);
+      renderSkeleton();
       try {
         const response = await api.getContentPlans();
 
