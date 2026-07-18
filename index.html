@@ -1,0 +1,3333 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Content Plan Humas - Portal Manajemen Konten</title>
+  <meta name="description" content="Sistem Rencana Konten Humas Berbasis Google Ecosystem & Responsive Mobile-First">
+  <meta name="theme-color" content="#3b82f6">
+
+  <!-- Cache Control Anti-Refresh Requirements -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Progressive Web App (PWA) Manifest & Icon -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <style>
+    :root {
+      /* Colors - Light Mode (Clean Professional Executive Palette) */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.9);
+
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+
+      --primary: #1e3a8a;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+
+      --accent: #0284c7;
+
+      --border-color: #e2e8f0;
+      --border-focus: #2563eb;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+      --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-full: 9999px;
+
+      --transition: all 0.2s ease-in-out;
+    }
+
+    [data-theme="dark"] {
+      /* Colors - Dark Mode (Sleek Dark Corporate) */
+      --bg-primary: #0b0f17;
+      --bg-secondary: #131a26;
+      --bg-tertiary: #1e293b;
+      --bg-glass: rgba(19, 26, 38, 0.9);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-light: rgba(59, 130, 246, 0.12);
+      --primary-border: rgba(59, 130, 246, 0.3);
+
+      --accent: #38bdf8;
+
+      --border-color: #263346;
+      --border-focus: #60a5fa;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    }
+
+    /* Print Styles */
+    #print-area {
+      display: none;
+    }
+
+    @media print {
+      body> :not(#print-area) {
+        display: none !important;
+      }
+
+      #print-area {
+        display: block !important;
+      }
+
+      #print-area {
+        position: static !important;
+        width: 100%;
+        color: #000 !important;
+        background: #fff !important;
+        padding: 0;
+        margin: 0;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      @page {
+        size: A4;
+        margin: 1.5cm;
+      }
+
+      .print-kop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      .print-logo {
+        width: 80px;
+        height: auto;
+        margin-right: 15px;
+      }
+
+      .print-kop-text {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        color: #000;
+      }
+
+      .kop-1 {
+        font-size: 14px;
+        font-weight: normal;
+      }
+
+      .kop-2 {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .kop-3 {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .kop-4 {
+        font-size: 10px;
+        line-height: 1.2;
+        margin-top: 3px;
+      }
+
+      .print-divider {
+        border-bottom: 3px solid #000 !important;
+        border-top: 1px solid #000 !important;
+        height: 2px;
+        margin-bottom: 20px;
+      }
+
+      .print-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        color: #000;
+      }
+
+      .print-subtitle {
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: #000;
+      }
+
+      .print-info-table {
+        width: 100%;
+        font-size: 12px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        color: #000;
+      }
+
+      .print-info-table td {
+        padding: 4px 0;
+        vertical-align: top;
+      }
+
+      .print-data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 11px;
+        color: #000;
+      }
+
+      .print-data-table th,
+      .print-data-table td {
+        border: 1px solid #000 !important;
+        padding: 6px;
+        text-align: center;
+      }
+
+      .print-data-table th {
+        font-weight: bold;
+        vertical-align: middle;
+      }
+
+      .print-data-table td:nth-child(3) {
+        text-align: left;
+      }
+
+      .print-signatures {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #000;
+      }
+
+      .print-signature-center {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 30px;
+        color: #000;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Font otomatis menyesuaikan native device */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.5;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding-bottom: 85px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: inherit;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.015em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      background: none;
+    }
+
+    /* Top Navigation Bar */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.6rem 1rem;
+      /* Thinner padding for mobile */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 768px) {
+      .top-header {
+        padding: 0.85rem 1.25rem;
+        /* Original padding for desktop */
+      }
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      box-shadow: 0 3px 8px rgba(37, 99, 235, 0.28);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) {
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    [data-theme="dark"] .brand-logo {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+    }
+
+    .brand-logo svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    @media (min-width: 768px) {
+      .brand-logo svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .brand-text h1 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0;
+      color: var(--text-main);
+    }
+
+    .brand-text span {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: block;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .brand-text h1 {
+        font-size: 1.1rem;
+      }
+
+      .brand-text span {
+        font-size: 0.75rem;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Global Header Search */
+    .header-search-wrapper {
+      flex: 1;
+      margin: 0 0.85rem;
+    }
+
+    @media (max-width: 767px) {
+      .brand-area {
+        display: none;
+        /* Hide brand area on mobile to maximize search bar */
+      }
+
+      .header-search-wrapper {
+        margin: 0 0.5rem 0 0;
+      }
+    }
+
+    .sheet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--primary-border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .sheet-badge:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .install-badge {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .install-badge:hover {
+      background: #10b981;
+      color: white;
+      border-color: #10b981;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
+    .icon-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-secondary);
+      border-color: var(--text-light);
+    }
+
+    .icon-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+    }
+
+    @media (min-width: 768px) {
+      .icon-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .icon-btn.spinning svg {
+      animation: spinIcon 0.8s linear infinite;
+      color: var(--primary);
+    }
+
+    @keyframes spinIcon {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Mobile Text Hiding for Clean Proportional UI */
+    @media (max-width: 850px) {
+      .bottom-nav .nav-item span {
+        display: none !important;
+      }
+
+      .bottom-nav .nav-item svg {
+        width: 26px !important;
+        height: 26px !important;
+        margin-bottom: 0 !important;
+      }
+
+      #btn-change-sheet span,
+      #btn-add-content span,
+      #btn-print-report span,
+      #btn-print-pelaporan span {
+        display: none;
+      }
+
+      #btn-change-sheet,
+      #btn-add-content,
+      #btn-print-report,
+      #btn-print-pelaporan {
+        padding: 0.6rem !important;
+      }
+
+      #btn-change-sheet svg,
+      #btn-add-content svg,
+      #btn-print-report svg,
+      #btn-print-pelaporan svg {
+        margin-right: 0 !important;
+        display: block !important;
+      }
+
+      /* Sesuaikan ukuran search bar */
+      .header-search-wrapper {
+        margin: 0 0.5rem 0 0;
+      }
+    }
+
+    /* Main Container */
+    .main-content {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem;
+    }
+
+    /* Views (Tab Switcher) */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Dashboard Overview Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .stat-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+    }
+
+    .stat-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .stat-value {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* Charts & Breakdown Section with Donut Charts */
+    .distribution-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .distribution-section {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .box-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .box-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Donut Chart Layout */
+    .chart-breakdown-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    @media (min-width: 600px) {
+      .chart-breakdown-wrapper {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+
+    .donut-chart-container {
+      width: 150px;
+      height: 150px;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .donut-chart-container svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .donut-center-text {
+      position: absolute;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .donut-center-num {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .donut-center-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .breakdown-list {
+      flex: 1;
+      width: 100%;
+    }
+
+    .breakdown-item {
+      margin-bottom: 0.85rem;
+    }
+
+    .breakdown-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .breakdown-legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Control Bar for Content Plan */
+    .control-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      .control-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-input-wrapper input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      transition: var(--transition);
+    }
+
+    .search-input-wrapper input:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .search-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .filters-group {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .filters-group::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .filter-select {
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--border-focus);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5;
+    }
+
+    /* View Switcher Bar */
+    .view-switcher-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .view-toggle-btns {
+      display: inline-flex;
+      background: var(--bg-tertiary);
+      padding: 3px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .toggle-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: calc(var(--radius-md) - 3px);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .toggle-btn.active {
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Mobile & Desktop Content Cards Grid */
+    .cards-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .content-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .content-card:hover {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-date {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.55;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    /* Card Footer & Prominent Action Buttons */
+    .card-footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pic-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: var(--bg-tertiary);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tombol Tindakan Kartu (Lebih Prominent, Jelas Terlihat & Mudah Ditap) */
+    .btn-card-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38rem;
+      padding: 0.48rem 0.95rem;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .btn-edit-action {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+
+    [data-theme="dark"] .btn-edit-action {
+      background: rgba(59, 130, 246, 0.18);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-edit-action:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-del-action {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.28);
+    }
+
+    .btn-del-action:hover {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
+    }
+
+    .btn-card-action svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 2.2;
+    }
+
+    /* Professional Minimalist Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.65rem;
+      border-radius: var(--radius-md);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      background: var(--bg-tertiary);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .badge-pillar {
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    [data-theme="dark"] .badge-pillar {
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+
+    /* Status Badges - Clean Executive Styling */
+    .status-badge {
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.73rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .status-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .status-idea {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-idea::before {
+      background: #d97706;
+    }
+
+    .status-script {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .status-script::before {
+      background: #4f46e5;
+    }
+
+    .status-design {
+      background: #f3e8ff;
+      color: #6b21a8;
+    }
+
+    .status-design::before {
+      background: #9333ea;
+    }
+
+    .status-review {
+      background: #ffe4e6;
+      color: #9f1239;
+    }
+
+    .status-review::before {
+      background: #e11d48;
+    }
+
+    .status-ready {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .status-ready::before {
+      background: #059669;
+    }
+
+    .status-published {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .status-published::before {
+      background: #ffffff;
+    }
+
+    [data-theme="dark"] .status-idea {
+      background: rgba(217, 119, 6, 0.2);
+      color: #fbbf24;
+    }
+
+    [data-theme="dark"] .status-script {
+      background: rgba(79, 70, 229, 0.2);
+      color: #818cf8;
+    }
+
+    [data-theme="dark"] .status-design {
+      background: rgba(147, 51, 234, 0.2);
+      color: #c084fc;
+    }
+
+    [data-theme="dark"] .status-review {
+      background: rgba(225, 29, 72, 0.2);
+      color: #fb7185;
+    }
+
+    [data-theme="dark"] .status-ready {
+      background: rgba(5, 150, 105, 0.2);
+      color: #34d399;
+    }
+
+    [data-theme="dark"] .status-published {
+      background: #059669;
+      color: #ffffff;
+    }
+
+    /* Desktop Table View */
+    .table-wrapper {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .content-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 900px;
+    }
+
+    .content-table th {
+      background: var(--bg-tertiary);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .content-table td {
+      padding: 1.1rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+
+    .content-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .content-table tr:hover td {
+      background: var(--bg-tertiary);
+    }
+
+    /* Kanban Board View */
+    .kanban-board {
+      display: flex;
+      gap: 1.1rem;
+      overflow-x: auto;
+      padding-bottom: 1.25rem;
+      min-height: 520px;
+    }
+
+    .kanban-board::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .kanban-board::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: var(--radius-full);
+    }
+
+    .kanban-column {
+      min-width: 300px;
+      max-width: 340px;
+      flex: 1;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .kanban-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.25rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--text-light);
+    }
+
+    .kanban-count {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+    }
+
+    .kanban-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      min-height: 200px;
+    }
+
+    /* Bottom Navigation Bar for Mobile */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.6rem 0;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    [data-theme="dark"] .nav-item.active {
+      color: #60a5fa;
+    }
+
+    .nav-item.active svg {
+      transform: translateY(-2px);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+    }
+
+    /* Modals - Anti-Stuck Fleksibel di Semua Layar Mobile/Desktop */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      background: rgba(11, 15, 23, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 620px;
+      max-height: calc(100vh - 30px);
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-glass);
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .modal-box {
+        max-height: calc(100vh - 20px);
+        border-radius: var(--radius-md);
+      }
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background: var(--bg-secondary);
+      z-index: 2;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .btn-close {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .btn-close:hover {
+      background: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-close svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .modal-body {
+      padding: 1.35rem 1.5rem 2.25rem 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      flex: 1 1 auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+
+    /* Touch Friendly & Clean Forms */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-group label {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 0.95rem;
+      min-height: 44px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .form-textarea {
+      min-height: 85px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      background: var(--bg-secondary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+    }
+
+    @media (min-width: 480px) {
+      .form-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      background: var(--bg-tertiary);
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .btn-secondary {
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border-color);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border-color);
+      margin: 1.5rem 0;
+    }
+
+    .empty-icon {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      justify-content: center;
+    }
+
+    .empty-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1.5;
+    }
+
+    .empty-state h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .empty-state p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- AREA PRINT LAPORAN (Sembunyi secara default) -->
+  <div id="print-area">
+    <table style="width: 100%; border: none;">
+      <thead>
+        <tr>
+          <td>
+            <div class="print-kop">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Logo-UINSSC-696x858.png" alt="Logo UINSSC"
+                class="print-logo" onerror="this.style.display='none'">
+              <div class="print-kop-text">
+                <div class="kop-1">KEMENTERIAN AGAMA REPUBLIK INDONESIA</div>
+                <div class="kop-2">UNIVERSITAS ISLAM NEGERI SIBER SYEKH NURJATI CIREBON</div>
+                <div class="kop-3">LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</div>
+                <div class="kop-4">
+                  Alamat: Jl. Perjuangan ByPass Sunyaragi Cirebon 45132<br>
+                  Telepon (0231) 481264 Faksimili (0231) 489926<br>
+                  Website: www.lp2m.uinssc.ac.id Email: lp2m@uinssc.ac.id
+                </div>
+              </div>
+            </div>
+            <div class="print-divider"></div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="print-title">
+              <div>DAFTAR HADIR KEGIATAN</div>
+              <div>PROGRAM RELAWAN PENGABDIAN UNTUK AKSELERASI KAMPUS BERDAMPAK TAHUN 2026</div>
+            </div>
+
+            <div class="print-subtitle">DATA PESERTA</div>
+
+            <table class="print-info-table">
+              <tr>
+                <td style="width:160px;">Nama</td>
+                <td>: <span id="out-nama"></span></td>
+              </tr>
+              <tr>
+                <td>NIM</td>
+                <td>: <span id="out-nim"></span></td>
+              </tr>
+              <tr>
+                <td>Prodi</td>
+                <td>: <span id="out-prodi"></span></td>
+              </tr>
+              <tr>
+                <td>Fakultas</td>
+                <td>: <span id="out-fakultas"></span></td>
+              </tr>
+              <tr>
+                <td>Periode Pelaksanaan</td>
+                <td>: <span id="out-periode"></span></td>
+              </tr>
+              <tr>
+                <td>Unit Tugas</td>
+                <td>: Humas & PPID UIN Siber Syekh Nurjati Cirebon</td>
+              </tr>
+              <tr>
+                <td style="vertical-align:top;">Pembimbing Lapangan</td>
+                <td>
+                  : 1. Mohamad Arifin<br>
+                  &nbsp;&nbsp;2. Amelia Ayu Lestari<br>
+                  &nbsp;&nbsp;3. Bekti Sugiyono<br>
+                  &nbsp;&nbsp;4. Agung Ahdiansyah
+                </td>
+              </tr>
+            </table>
+
+            <div class="print-subtitle" style="text-align:center; margin-top:20px; font-weight:bold;">LAPORAN KINERJA
+              RELAWAN</div>
+
+            <table class="print-data-table" id="print-data-table">
+              <thead>
+                <tr>
+                  <th style="width:30px;">No</th>
+                  <th style="width:100px;">Tanggal</th>
+                  <th style="width:150px;">Butir KKN (SKP)</th>
+                  <th>Deskripsi Konten</th>
+                  <th style="width:150px;">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- JS will populate rows -->
+              </tbody>
+            </table>
+
+            <div class="print-signatures">
+              <div class="sig-left">
+                <div style="margin-bottom:60px;">Pembimbing Lapangan<br>Humas dan PPID</div>
+                <div>(<span id="out-pembimbing"
+                    style="display:inline-block; min-width:150px; border-bottom:1px solid #000;"></span>)</div>
+                <div>NIP.</div>
+              </div>
+              <div class="sig-right">
+                <div style="margin-bottom:60px;">Cirebon, <span id="out-ttd-tanggal"></span><br>Relawan Pengabdian</div>
+                <div>(<span id="out-ttd-nama"
+                    style="display:inline-block; min-width:150px; border-bottom:1px solid #000;"></span>)</div>
+                <div>NIM. <span id="out-ttd-nim"></span></div>
+              </div>
+            </div>
+
+            <div class="print-signature-center">
+              <div style="margin-bottom:60px;">
+                Mengetahui,<br>
+                Kepala Pusat Pengabdian kepada<br>
+                Masyarakat dan SDG's
+              </div>
+              <div style="font-weight:bold; text-decoration:underline;">Dr. Budi Manfaat, M.Si.</div>
+              <div>NIP. 198111282008011008</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-header">
+    <div class="brand-area">
+      <div class="brand-logo" title="Logo Content Plan Humas">
+        <!-- Professional Communication Megaphone + Plan Calendar Geometry SVG Logo -->
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>Content Plan Humas</h1>
+        <span id="header-subtitle" style="color: var(--text-muted); font-weight: 500;">Portal Monitoring & Manajemen
+          Konten</span>
+      </div>
+    </div>
+
+    <!-- Global Header Search -->
+    <div class="header-search-wrapper">
+      <div class="search-input-wrapper">
+        <span class="search-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </span>
+        <input type="text" id="search-input" placeholder="Cari...">
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Tombol Instal PWA (Muncul otomatis saat siap diinstal) -->
+      <button class="icon-btn install-badge" id="btn-install-pwa" title="Instal Aplikasi PWA ke Perangkat"
+        style="display: none;">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+        </svg>
+      </button>
+
+      <!-- Badge Ganti Sheet -->
+      <button class="sheet-badge" id="btn-change-sheet" title="Ganti Bulan / Sheet Aktif">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          style="width: 15px; height: 15px; margin-right: 4px; display: none;" class="mobile-only-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        <span id="active-sheet-badge">Sheet: Juli</span>
+      </button>
+
+      <!-- Tombol Refresh (Berputar saat muat ulang, tanpa bar loading) -->
+      <button class="icon-btn" id="btn-refresh" title="Muat Ulang Data dari Spreadsheet">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+          </path>
+        </svg>
+      </button>
+
+      <!-- Tombol Mode Gelap/Terang -->
+      <button class="icon-btn" id="btn-theme-toggle" title="Ubah Mode Gelap / Terang">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+
+    <!-- SECTION 1: DASHBOARD OVERVIEW -->
+    <section id="view-dashboard" class="view-section active">
+      <!-- 4 Stat Cards -->
+      <div class="dashboard-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Total Rencana Konten</span>
+            <div class="stat-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-desc">Konten terdaftar bulan ini</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Telah Dipublikasi</span>
+            <div class="stat-icon" style="color: #10b981;">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-published">0</div>
+          <div class="stat-desc" id="stat-published-pct">0% dari total konten</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Dalam Produksi</span>
+            <div class="stat-icon" style="color: #f59e0b;">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-process">0</div>
+          <div class="stat-desc">Idea, Script, Desain & Review</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Platform Utama</span>
+            <div class="stat-icon" style="color: #38bdf8;">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-value" id="stat-top-platform" style="font-size: 1.35rem; line-height: 2.2rem;">-</div>
+          <div class="stat-desc">Distribusi konten terbanyak</div>
+        </div>
+      </div>
+
+      <!-- Charts & Breakdown Section with SVG Donut Charts -->
+      <div class="distribution-section">
+        <!-- Platform Breakdown & Donut Chart -->
+        <div class="box-card">
+          <div class="box-header">
+            <h3 class="box-title">Distribusi Platform</h3>
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Alokasi Publikasi</span>
+          </div>
+          <div class="chart-breakdown-wrapper">
+            <div class="donut-chart-container" id="donut-platform">
+              <!-- SVG Donut Injected via JS -->
+            </div>
+            <div class="breakdown-list" id="platform-breakdown-container">
+              <!-- Progress tracks Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Pillar Breakdown & Donut Chart -->
+        <div class="box-card">
+          <div class="box-header">
+            <h3 class="box-title">Pilar & Value Konten</h3>
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Fokus Komunikasi</span>
+          </div>
+          <div class="chart-breakdown-wrapper">
+            <div class="donut-chart-container" id="donut-pillar">
+              <!-- SVG Donut Injected via JS -->
+            </div>
+            <div class="breakdown-list" id="pillar-breakdown-container">
+              <!-- Progress tracks Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; margin-bottom: 1rem;">
+        <h3>Daftar Konten Terbaru</h3>
+        <button class="btn-primary" onclick="switchView('content-plan')">Lihat Semua Konten</button>
+      </div>
+      <div id="dashboard-recent-cards" class="cards-container">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: RENCANA KONTEN (CARD & TABLE VIEW) -->
+    <section id="view-content-plan" class="view-section">
+      <!-- Controls & Filter Bar -->
+      <div class="control-bar">
+        <div class="filters-group" style="flex: 1;">
+          <select id="filter-platform" class="filter-select">
+            <option value="ALL">Semua Platform</option>
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Shorts YouTube">Shorts YouTube</option>
+          </select>
+
+          <select id="filter-pillar" class="filter-select">
+            <option value="ALL">Semua Pilar</option>
+            <option value="Educational (Edukasi)">Educational</option>
+            <option value="Entertaining (Hiburan)">Entertaining</option>
+            <option value="Inspirational (Inspirasi)">Inspirational</option>
+            <option value="Promotional (Promosi)">Promotional</option>
+            <option value="Behind the Scene (BTS)">Behind the Scene</option>
+          </select>
+
+          <select id="filter-status" class="filter-select">
+            <option value="ALL">Semua Status</option>
+            <option value="Idea / Konsep">Idea / Konsep</option>
+            <option value="Scripting / Copywriting">Scripting / Copywriting</option>
+            <option value="Desain / Produksi">Desain / Produksi</option>
+            <option value="Review / Approval">Review / Approval</option>
+            <option value="Siap Tayang (Ready)">Siap Tayang (Ready)</option>
+            <option value="Published">Published</option>
+          </select>
+
+          <select id="filter-pic" class="filter-select">
+            <option value="ALL">Semua PIC</option>
+            <option value="Marissa Fadhliya Rahmadiah">Marissa Fadhliya Rahmadiah</option>
+            <option value="Derillya Ananta">Derillya Ananta</option>
+            <option value="Siti Uswatun Hasanah">Siti Uswatun Hasanah</option>
+            <option value="Fitri Nurhasanah">Fitri Nurhasanah</option>
+            <option value="Ai Nurohmah">Ai Nurohmah</option>
+            <option value="Ingka Nurul Hotimah">Ingka Nurul Hotimah</option>
+          </select>
+        </div>
+
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <!-- Tombol Cetak PDF Laporan -->
+          <button class="btn-secondary" id="btn-print-report"
+            style="color: var(--primary); border-color: var(--primary);" title="Unduh Laporan">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:18px; height:18px;">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+              </path>
+            </svg>
+            <span>Cetak Laporan</span>
+          </button>
+          <button class="btn-primary" id="btn-add-content">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+            <span>Tambah Konten</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- View Switcher (Cards vs Table) -->
+      <div class="view-switcher-bar">
+        <span id="content-count-label"
+          style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Menampilkan 0 konten</span>
+        <div class="view-toggle-btns">
+          <button class="toggle-btn active" id="btn-view-cards">Kartu (Mobile)</button>
+          <button class="toggle-btn" id="btn-view-table">Tabel (Desktop)</button>
+        </div>
+      </div>
+
+      <!-- Container Tampilan Kartu -->
+      <div id="content-cards-view" class="cards-container">
+        <!-- Cards injected dynamically -->
+      </div>
+
+      <!-- Container Tampilan Tabel -->
+      <div id="content-table-view" class="table-wrapper" style="display: none;">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Pilar & Value</th>
+              <th>PIC</th>
+              <th>Judul & Topik</th>
+              <th>Platform</th>
+              <th>Status Produksi</th>
+              <th>Link</th>
+              <th style="width: 170px;">Tindakan</th>
+            </tr>
+          </thead>
+          <tbody id="content-table-body">
+            <!-- Table rows injected dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: KANBAN BOARD VIEW -->
+    <section id="view-kanban" class="view-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3>Alur Kerja Produksi Konten</h3>
+        <button class="btn-primary" onclick="openModal('add')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <span>Tambah Konten</span>
+        </button>
+      </div>
+      <div class="kanban-board" id="kanban-columns-container">
+        <!-- Kanban Columns injected dynamically -->
+      </div>
+    </section>
+
+    <!-- SECTION 4: PELAPORAN VIEW -->
+    <section id="view-pelaporan" class="view-section">
+      <div
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <h3>Laporan Kinerja Relawan</h3>
+        <button class="btn-primary" id="btn-print-pelaporan"
+          onclick="document.getElementById('btn-print-report').click()"
+          style="background:#10b981; border-color:#10b981;">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px; height:16px; margin-right:4px;">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+            </path>
+          </svg>
+          <span>Unduh PDF</span>
+        </button>
+      </div>
+
+      <!-- Filters -->
+      <div class="box-card" style="margin-bottom: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label for="filter-lapor-pic">PIC (Relawan)</label>
+            <select id="filter-lapor-pic" class="form-select" onchange="renderPelaporan()">
+              <option value="Semua PIC">-- Semua PIC --</option>
+              <option value="Marissa Fadhliya Rahmadiah">Marissa Fadhliya Rahmadiah</option>
+              <option value="Derillya Ananta">Derillya Ananta</option>
+              <option value="Siti Uswatun Hasanah">Siti Uswatun Hasanah</option>
+              <option value="Fitri Nurhasanah">Fitri Nurhasanah</option>
+              <option value="Ai Nurohmah">Ai Nurohmah</option>
+              <option value="Ingka Nurul Hotimah">Ingka Nurul Hotimah</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filter-lapor-bulan">Bulan</label>
+            <select id="filter-lapor-bulan" class="form-select" onchange="renderPelaporan()">
+              <option value="Semua Bulan">Semua Bulan</option>
+              <option value="Juli">Juli</option>
+              <option value="Agustus">Agustus</option>
+              <option value="September">September</option>
+              <option value="Oktober">Oktober</option>
+              <option value="November">November</option>
+              <option value="Desember">Desember</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="filter-lapor-skp">Kategori Kinerja (SKP)</label>
+            <select id="filter-lapor-skp" class="form-select" onchange="renderPelaporan()">
+              <option value="Semua SKP">Semua SKP</option>
+              <option value="Apel dan briefing kegiatan">Apel dan briefing kegiatan</option>
+              <option value="Peliputan kegiatan pimpinan universitas">Peliputan kegiatan pimpinan universitas</option>
+              <option value="Penulisan berita website">Penulisan berita website</option>
+              <option value="Editing berita">Editing berita</option>
+              <option value="Dokumentasi foto kegiatan">Dokumentasi foto kegiatan</option>
+              <option value="Dokumentasi video">Dokumentasi video</option>
+              <option value="Editing video pendek">Editing video pendek</option>
+              <option value="Mendesain infografis">Mendesain infografis</option>
+              <option value="Pengelolaan media sosial">Pengelolaan media sosial</option>
+              <option value="Monitoring pemberitaan media massa">Monitoring pemberitaan media massa</option>
+              <option value="Penyusunan konten PPID">Penyusunan konten PPID</option>
+              <option value="Pengelolaan arsip digital">Pengelolaan arsip digital</option>
+              <option value="Wawancara narasumber">Wawancara narasumber</option>
+              <option value="Pembuatan caption media sosial">Pembuatan caption media sosial</option>
+              <option value="Publikasi website">Publikasi website</option>
+              <option value="Evaluasi konten">Evaluasi konten</option>
+              <option value="Rapat koordinasi">Rapat koordinasi</option>
+              <option value="Penyusunan laporan">Penyusunan laporan</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table UI -->
+      <div class="box-card" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+          <thead>
+            <tr style="background: var(--bg-tertiary); border-bottom: 2px solid var(--border-color);">
+              <th style="padding: 10px; text-align: left;">Tanggal</th>
+              <th style="padding: 10px; text-align: left;">PIC</th>
+              <th style="padding: 10px; text-align: left;">Bulan</th>
+              <th style="padding: 10px; text-align: left;">Butir KKN (SKP)</th>
+              <th style="padding: 10px; text-align: left;">Deskripsi Konten</th>
+              <th style="padding: 10px; text-align: center;">Evidence</th>
+            </tr>
+          </thead>
+          <tbody id="pelaporan-tbody">
+            <!-- JS Data goes here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar for Mobile -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-view="dashboard">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+        </path>
+      </svg>
+      <span>Dasbor</span>
+    </div>
+    <div class="nav-item" data-view="content-plan">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+        </path>
+      </svg>
+      <span>Rencana Konten</span>
+    </div>
+    <div class="nav-item" data-view="kanban">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+        </path>
+      </svg>
+      <span>Alur Produksi</span>
+    </div>
+    <div class="nav-item" data-view="pelaporan">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 17v-2m4 2v-4m4 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+        </path>
+      </svg>
+      <span>Pelaporan</span>
+    </div>
+  </nav>
+
+  <!-- MODAL CETAK LAPORAN -->
+  <div class="modal-overlay" id="modal-print" style="z-index: 300;">
+    <div class="modal-box" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Unduh Laporan</h3>
+        <button class="btn-close" id="btn-close-print" title="Tutup">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <form id="form-print">
+        <div class="modal-body" style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="form-group">
+            <label for="print-pic">Pilih Nama PIC</label>
+            <select id="print-pic" class="form-select">
+              <option value="Semua PIC">Semua PIC (Kompilasi Seluruh Relawan)</option>
+              <option value="Marissa Fadhliya Rahmadiah">Marissa Fadhliya Rahmadiah</option>
+              <option value="Derillya Ananta">Derillya Ananta</option>
+              <option value="Siti Uswatun Hasanah">Siti Uswatun Hasanah</option>
+              <option value="Fitri Nurhasanah">Fitri Nurhasanah</option>
+              <option value="Ai Nurohmah">Ai Nurohmah</option>
+              <option value="Ingka Nurul Hotimah">Ingka Nurul Hotimah</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="print-nim">NIM</label>
+            <input type="text" id="print-nim" class="form-input"
+              placeholder="Masukkan NIM (kosongkan jika cetak semua)">
+          </div>
+          <div class="form-group">
+            <label for="print-prodi">Program Studi</label>
+            <input type="text" id="print-prodi" class="form-input"
+              placeholder="Masukkan Program Studi (kosongkan jika cetak semua)">
+          </div>
+          <div class="form-group">
+            <label for="print-fakultas">Fakultas</label>
+            <input type="text" id="print-fakultas" class="form-input"
+              placeholder="Masukkan Fakultas (kosongkan jika cetak semua)">
+          </div>
+          <div class="form-group">
+            <label for="print-periode">Periode Pelaksanaan</label>
+            <input type="text" id="print-periode" class="form-input"
+              placeholder="Contoh: 1 Agustus s.d. 31 Agustus 2026">
+          </div>
+          <div class="form-group">
+            <label for="print-pembimbing">Nama & Gelar Pembimbing Lapangan (opsional)</label>
+            <input type="text" id="print-pembimbing" class="form-input"
+              placeholder="Kosongkan agar bisa ditulis tangan nanti">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-print">Batal</button>
+          <button type="submit" class="btn-primary" style="background:#10b981; border-color:#10b981;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              style="width:16px; height:16px; margin-right:4px; display:inline-block; vertical-align:text-bottom;">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+              </path>
+            </svg>
+            Cetak PDF
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL CUSTOM DIALOG (ALERT/CONFIRM/PROMPT) -->
+  <div class="modal-overlay" id="modal-dialog" style="z-index: 400;">
+    <div class="modal-box" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="dialog-title">Konfirmasi</h3>
+        <button class="btn-close" id="btn-close-dialog" title="Tutup">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <p id="dialog-message" style="margin: 0; color: var(--text-main); font-size: 0.95rem; line-height: 1.5;"></p>
+        <input type="text" id="dialog-input" class="form-input" style="display: none; margin-top: 0.75rem;"
+          autocomplete="off">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btn-dialog-cancel">Batal</button>
+        <button type="button" class="btn-primary" id="btn-dialog-confirm">Ya</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: CRUD FORM (TAMBAH / EDIT KONTEN - ANTI STUCK & FLEKSIBEL) -->
+  <div class="modal-overlay" id="modal-crud">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="crud-modal-title">Tambah Rencana Konten</h3>
+        <button class="btn-close" id="btn-close-crud" title="Tutup Modal">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <form id="form-crud" style="display: flex; flex-direction: column; flex: 1 1 auto; overflow: hidden;">
+        <input type="hidden" id="field-id">
+        <div class="modal-body">
+          <!-- Row 1: Tanggal & Platform -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="field-tanggal">Tanggal Tayang *</label>
+              <input type="date" id="field-tanggal" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="field-platform">Platform *</label>
+              <select id="field-platform" class="form-select" required>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Shorts YouTube">Shorts YouTube</option>
+                <option value="Website">Website</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 2: Content Pillar & Value -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="field-pillar">Content Pillar *</label>
+              <select id="field-pillar" class="form-select" required>
+                <option value="Educational (Edukasi)">Educational (Edukasi)</option>
+                <option value="Entertaining (Hiburan)">Entertaining (Hiburan)</option>
+                <option value="Inspirational (Inspirasi)">Inspirational (Inspirasi)</option>
+                <option value="Promotional (Promosi)">Promotional (Promosi)</option>
+                <option value="Behind the Scene (BTS)">Behind the Scene (BTS)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="field-value">Value Konten *</label>
+              <select id="field-value" class="form-select" required>
+                <option value="Informasi">Informasi</option>
+                <option value="Edukasi">Edukasi</option>
+                <option value="Entertain">Entertain</option>
+                <option value="Promosi">Promosi</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3: PIC & Status -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="field-pic">PIC (Penanggung Jawab) *</label>
+              <select id="field-pic" class="form-select" required>
+                <option value="Marissa Fadhliya Rahmadiah">Marissa Fadhliya Rahmadiah</option>
+                <option value="Derillya Ananta">Derillya Ananta</option>
+                <option value="Siti Uswatun Hasanah">Siti Uswatun Hasanah</option>
+                <option value="Fitri Nurhasanah">Fitri Nurhasanah</option>
+                <option value="Ai Nurohmah">Ai Nurohmah</option>
+                <option value="Ingka Nurul Hotimah">Ingka Nurul Hotimah</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="field-status">Status Alur Kerja *</label>
+              <select id="field-status" class="form-select" required>
+                <option value="Idea / Konsep">Idea / Konsep</option>
+                <option value="Scripting / Copywriting">Scripting / Copywriting</option>
+                <option value="Desain / Produksi">Desain / Produksi</option>
+                <option value="Review / Approval">Review / Approval</option>
+                <option value="Siap Tayang (Ready)">Siap Tayang (Ready)</option>
+                <option value="Published">Published</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3.5: Kinerja SKP -->
+          <div class="form-group">
+            <label for="field-skp">Kategori Kinerja (SKP/KKN) *</label>
+            <select id="field-skp" class="form-select" required>
+              <option value="-">-- Pilih Kategori SKP / KKN --</option>
+              <option value="Apel dan briefing kegiatan">Apel dan briefing kegiatan</option>
+              <option value="Peliputan kegiatan pimpinan universitas">Peliputan kegiatan pimpinan universitas</option>
+              <option value="Penulisan berita website">Penulisan berita website</option>
+              <option value="Editing berita">Editing berita</option>
+              <option value="Dokumentasi foto kegiatan">Dokumentasi foto kegiatan</option>
+              <option value="Dokumentasi video">Dokumentasi video</option>
+              <option value="Editing video pendek">Editing video pendek</option>
+              <option value="Mendesain infografis">Mendesain infografis</option>
+              <option value="Pengelolaan media sosial">Pengelolaan media sosial</option>
+              <option value="Monitoring pemberitaan media massa">Monitoring pemberitaan media massa</option>
+              <option value="Penyusunan konten PPID">Penyusunan konten PPID</option>
+              <option value="Pengelolaan arsip digital">Pengelolaan arsip digital</option>
+              <option value="Wawancara narasumber">Wawancara narasumber</option>
+              <option value="Pembuatan caption media sosial">Pembuatan caption media sosial</option>
+              <option value="Publikasi website">Publikasi website</option>
+              <option value="Evaluasi konten">Evaluasi konten</option>
+              <option value="Rapat koordinasi">Rapat koordinasi</option>
+              <option value="Penyusunan laporan">Penyusunan laporan</option>
+            </select>
+          </div>
+
+          <!-- Row 4: Judul Konten -->
+          <div class="form-group">
+            <label for="field-judul">Judul / Topik Konten *</label>
+            <input type="text" id="field-judul" class="form-input"
+              placeholder="Contoh: Sosialisasi Layanan Permohonan Informasi Publik" required>
+          </div>
+
+          <!-- Row 5: Isi / Scripting -->
+          <div class="form-group">
+            <label for="field-isi">Isi Konten / Naskah Script</label>
+            <textarea id="field-isi" class="form-textarea"
+              placeholder="Tuliskan ringkasan poin utama, naskah narasi, atau deskripsi visual..."></textarea>
+          </div>
+
+          <!-- Row 6: CTA & Hashtag -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="field-cta">CTA (Call to Action)</label>
+              <input type="text" id="field-cta" class="form-input"
+                placeholder="Contoh: Kunjungi website / klik tautan di bio">
+            </div>
+            <div class="form-group">
+              <label for="field-hashtag">Hashtag</label>
+              <input type="text" id="field-hashtag" class="form-input"
+                placeholder="Contoh: #Humas #PPID #InformasiPublik">
+            </div>
+          </div>
+
+          <!-- Row 7: Caption -->
+          <div class="form-group">
+            <label for="field-caption">Caption Postingan</label>
+            <textarea id="field-caption" class="form-textarea"
+              placeholder="Tuliskan teks caption lengkap untuk publikasi di media sosial..."></textarea>
+          </div>
+
+          <!-- Row 8: Link Publikasi -->
+          <div class="form-group" id="group-link" style="display: none;">
+            <label for="field-link">Link Publikasi</label>
+            <input type="url" id="field-link" class="form-input" placeholder="Contoh: https://instagram.com/p/...">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-crud">Batal</button>
+          <button type="submit" class="btn-primary" id="btn-save-crud">Simpan Rencana Konten</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SINGLE PAGE APPLICATION JAVASCRIPT -->
+  <script>
+    // =========================================================================================
+    // KONFIGURASI URL WEB APP GOOGLE APPS SCRIPT
+    // Tempelkan Web App URL hasil deploy berkas Code.gs Anda ke dalam tanda kutip di bawah:
+    // =========================================================================================
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwg1gMywcGzBY8pxep8Cy8L5PdDx98HkfrH4DZO8vIw5otAwIByAjWEU4CdhqkiJASUOA/exec";
+
+    // Registrasi Progressive Web App (PWA) & Prompt Install
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => console.error("Service Worker error:", err));
+      });
+    }
+
+    let deferredPrompt;
+    const btnInstallPwa = document.getElementById('btn-install-pwa');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btnInstallPwa.style.display = 'inline-flex';
+    });
+
+    btnInstallPwa.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          btnInstallPwa.style.display = 'none';
+        }
+        deferredPrompt = null;
+      }
+    });
+
+    // Konfigurasi Standar dan Opsi Dropdown
+    const CONFIG = {
+      PILLARS: [
+        { value: "Educational (Edukasi)", label: "Educational (Edukasi)" },
+        { value: "Entertaining (Hiburan)", label: "Entertaining (Hiburan)" },
+        { value: "Inspirational (Inspirasi)", label: "Inspirational (Inspirasi)" },
+        { value: "Promotional (Promosi)", label: "Promotional (Promosi)" },
+        { value: "Behind the Scene (BTS)", label: "Behind the Scene (BTS)" }
+      ],
+      STATUSES: [
+        { value: "Idea / Konsep", label: "Idea / Konsep", badgeClass: "status-idea" },
+        { value: "Scripting / Copywriting", label: "Scripting / Copywriting", badgeClass: "status-script" },
+        { value: "Desain / Produksi", label: "Desain / Produksi", badgeClass: "status-design" },
+        { value: "Review / Approval", label: "Review / Approval", badgeClass: "status-review" },
+        { value: "Siap Tayang (Ready)", label: "Siap Tayang (Ready)", badgeClass: "status-ready" },
+        { value: "Published", label: "Published", badgeClass: "status-published" }
+      ],
+      STORAGE_KEYS: {
+        SHEET_NAME: "cp_humas_active_sheet",
+        THEME: "cp_humas_theme"
+      }
+    };
+
+    // Controller Tombol Refresh (Berputar saat loading, tanpa bar loading)
+    function setRefreshLoading(active) {
+      const btnRefresh = document.getElementById('btn-refresh');
+      if (active) btnRefresh.classList.add('spinning');
+      else btnRefresh.classList.remove('spinning');
+    }
+
+    // Service API Google Sheets
+    // Custom Dialog Wrapper
+    function showCustomDialog({ title, message, type = 'confirm', confirmText = 'Ya', confirmColor = 'var(--primary)', inputValue = '' }) {
+      return new Promise((resolve) => {
+        const modal = document.getElementById('modal-dialog');
+        document.getElementById('dialog-title').textContent = title;
+        document.getElementById('dialog-message').textContent = message;
+
+        const inputEl = document.getElementById('dialog-input');
+        if (type === 'prompt') {
+          inputEl.style.display = 'block';
+          inputEl.value = inputValue;
+          inputEl.focus();
+        } else {
+          inputEl.style.display = 'none';
+        }
+
+        const btnConfirm = document.getElementById('btn-dialog-confirm');
+        btnConfirm.textContent = confirmText;
+        btnConfirm.style.background = confirmColor;
+        btnConfirm.style.borderColor = confirmColor;
+
+        modal.classList.add('active');
+
+        const cleanup = () => {
+          modal.classList.remove('active');
+          document.getElementById('btn-close-dialog').removeEventListener('click', onCancel);
+          document.getElementById('btn-dialog-cancel').removeEventListener('click', onCancel);
+          btnConfirm.removeEventListener('click', onConfirm);
+        };
+
+        const onCancel = () => { cleanup(); resolve(null); };
+        const onConfirm = () => { cleanup(); resolve(type === 'prompt' ? inputEl.value : true); };
+
+        document.getElementById('btn-close-dialog').addEventListener('click', onCancel);
+        document.getElementById('btn-dialog-cancel').addEventListener('click', onCancel);
+        btnConfirm.addEventListener('click', onConfirm);
+      });
+    }
+
+    class ApiService {
+      constructor() {
+        this.apiUrl = APPS_SCRIPT_URL.trim();
+        const currentMonthIndex = new Date().getMonth();
+        const indonesianMonths = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const currentMonthName = indonesianMonths[currentMonthIndex];
+        this.sheetName = localStorage.getItem(CONFIG.STORAGE_KEYS.SHEET_NAME) || currentMonthName;
+      }
+
+      getSheetName() { return this.sheetName; }
+      setSheetName(name) {
+        if (!name) {
+          const currentMonthIndex = new Date().getMonth();
+          const indonesianMonths = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+          name = indonesianMonths[currentMonthIndex];
+        }
+        this.sheetName = name.trim();
+        localStorage.setItem(CONFIG.STORAGE_KEYS.SHEET_NAME, this.sheetName);
+      }
+
+      isConfigured() {
+        return this.apiUrl.length > 10 && this.apiUrl.includes("script.google.com");
+      }
+
+      async getContentPlans() {
+        if (!this.isConfigured()) {
+          return {
+            mode: "unconfigured",
+            sheetName: this.sheetName,
+            sheets: [this.sheetName],
+            data: []
+          };
+        }
+
+        // Tambahkan timestamp (t) agar browser tidak melakukan caching pada request API
+        const url = `${this.apiUrl}?action=read&sheetName=${encodeURIComponent(this.sheetName)}&t=${new Date().getTime()}`;
+        const response = await fetch(url, { cache: "no-store" });
+        const result = await response.json();
+        if (result.status === "success") {
+          return {
+            mode: "live",
+            sheetName: result.sheetName || this.sheetName,
+            sheets: result.sheets || [this.sheetName],
+            data: result.data || []
+          };
+        } else {
+          throw new Error(result.message || "Gagal mengambil data dari Google Sheets");
+        }
+      }
+
+      async createContentPlan(item) {
+        if (!this.isConfigured()) {
+          throw new Error("URL Web App Google Apps Script belum diisi pada variabel APPS_SCRIPT_URL di index.html");
+        }
+        const response = await fetch(this.apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ action: "create", sheetName: this.sheetName, data: item })
+        });
+        const result = await response.json();
+        if (result.status === "success") return result.data;
+        throw new Error(result.message);
+      }
+
+      async updateContentPlan(item) {
+        if (!this.isConfigured()) {
+          throw new Error("URL Web App Google Apps Script belum diisi pada variabel APPS_SCRIPT_URL di index.html");
+        }
+        const response = await fetch(this.apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ action: "update", sheetName: this.sheetName, data: item })
+        });
+        const result = await response.json();
+        if (result.status === "success") return result.data;
+        throw new Error(result.message);
+      }
+
+      async deleteContentPlan(id) {
+        if (!this.isConfigured()) {
+          throw new Error("URL Web App Google Apps Script belum diisi pada variabel APPS_SCRIPT_URL di index.html");
+        }
+        const response = await fetch(this.apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ action: "delete", sheetName: this.sheetName, data: { ID: id } })
+        });
+        const result = await response.json();
+        if (result.status === "success") return true;
+        throw new Error(result.message);
+      }
+
+      async createNewSheet(newSheetName) {
+        if (!this.isConfigured()) {
+          throw new Error("URL Web App Google Apps Script belum diisi pada variabel APPS_SCRIPT_URL di index.html");
+        }
+        const response = await fetch(this.apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ action: "create_sheet", sheetName: newSheetName })
+        });
+        const result = await response.json();
+        if (result.status === "success") {
+          this.setSheetName(newSheetName);
+          return result;
+        }
+        throw new Error(result.message);
+      }
+    }
+
+    const api = new ApiService();
+    let contentPlans = [];
+    let isEdit = false;
+    let currentView = "dashboard";
+    let isTableView = false;
+
+    const views = {
+      dashboard: document.getElementById('view-dashboard'),
+      'content-plan': document.getElementById('view-content-plan'),
+      kanban: document.getElementById('view-kanban'),
+      pelaporan: document.getElementById('view-pelaporan')
+    };
+
+    // Fungsi Muat Ulang Data & Render Seluruh UI (Tanpa Bar Loading, hanya Ikon Refresh Berputar)
+    async function refreshData() {
+      const badge = document.getElementById('active-sheet-badge');
+      badge.textContent = `Sheet: ${api.getSheetName()}`;
+
+      if (!api.isConfigured()) {
+        contentPlans = [];
+        renderDashboard();
+        renderContentPlan();
+        renderKanban();
+        return;
+      }
+
+      setRefreshLoading(true);
+      try {
+        const response = await api.getContentPlans();
+
+        // --- DATA NORMALIZATION ---
+        let rawData = response.data || [];
+        contentPlans = rawData.map(c => {
+          if (c.Status) {
+            const matched = CONFIG.STATUSES.find(s => s.value.trim().toLowerCase() === String(c.Status).trim().toLowerCase());
+            if (matched) c.Status = matched.value;
+            else c.Status = String(c.Status).trim();
+          }
+          if (c.Platform) c.Platform = String(c.Platform).trim();
+          if (c["Content Pillar"]) c["Content Pillar"] = String(c["Content Pillar"]).trim();
+          if (c.PIC) c.PIC = String(c.PIC).trim();
+          return c;
+        });
+
+        badge.textContent = `Sheet: ${response.sheetName || api.getSheetName()}`;
+        renderDashboard();
+        renderContentPlan();
+        renderKanban();
+        renderPelaporan();
+      } catch (e) {
+        console.error("Koneksi ke Spreadsheet gagal:", e.message);
+      } finally {
+        setRefreshLoading(false);
+      }
+    }
+
+    // Tombol Refresh Event Listener
+    document.getElementById('btn-refresh').addEventListener('click', () => refreshData());
+
+    // Navigasi Tampilan
+    window.switchView = function (viewName) {
+      currentView = viewName;
+      Object.keys(views).forEach(k => {
+        if (k === viewName) views[k].classList.add('active');
+        else views[k].classList.remove('active');
+      });
+      document.querySelectorAll('.nav-item').forEach(el => {
+        if (el.getAttribute('data-view') === viewName) el.classList.add('active');
+        else el.classList.remove('active');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    document.querySelectorAll('.nav-item[data-view]').forEach(item => {
+      item.addEventListener('click', () => switchView(item.getAttribute('data-view')));
+    });
+
+    // Toggle Tampilan Kartu vs Tabel
+    document.getElementById('btn-view-cards').addEventListener('click', () => {
+      isTableView = false;
+      document.getElementById('btn-view-cards').classList.add('active');
+      document.getElementById('btn-view-table').classList.remove('active');
+      document.getElementById('content-cards-view').style.display = 'grid';
+      document.getElementById('content-table-view').style.display = 'none';
+    });
+
+    document.getElementById('btn-view-table').addEventListener('click', () => {
+      isTableView = true;
+      document.getElementById('btn-view-table').classList.add('active');
+      document.getElementById('btn-view-cards').classList.remove('active');
+      document.getElementById('content-table-view').style.display = 'block';
+      document.getElementById('content-cards-view').style.display = 'none';
+    });
+
+    // Listener Filter & Pencarian
+    ['filter-platform', 'filter-pillar', 'filter-status', 'filter-pic'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', renderContentPlan);
+    });
+
+    const searchEl = document.getElementById('search-input');
+    if (searchEl) {
+      searchEl.addEventListener('input', () => {
+        if (currentView !== 'content-plan' && searchEl.value.trim() !== '') {
+          switchView('content-plan');
+        }
+        renderContentPlan();
+      });
+    }
+
+    // Helper: Empty State Generator
+    function getEmptyStateHtml(spanColumns = 2) {
+      return `
+        <div class="empty-state" style="grid-column: span ${spanColumns};">
+          <div class="empty-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h3>Belum Ada Konten Terdaftar</h3>
+          <p>Klik tombol Tambah Konten untuk membuat rencana publikasi perdana Anda di bulan ${api.getSheetName()}.</p>
+        </div>
+      `;
+    }
+
+    // Helper: Pure SVG Donut Chart Generator
+    function buildDonutChartHtml(items, totalCount) {
+      if (totalCount === 0) {
+        return `
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="38" fill="none" stroke="var(--bg-tertiary)" stroke-width="14"></circle>
+          </svg>
+          <div class="donut-center-text">
+            <div class="donut-center-num">0</div>
+            <div class="donut-center-lbl">Total</div>
+          </div>
+        `;
+      }
+
+      const radius = 38;
+      const circumference = 2 * Math.PI * radius; // ~238.76
+      let currentOffset = 0;
+
+      const circles = items.map(item => {
+        if (item.count === 0) return "";
+        const segmentLen = (item.count / totalCount) * circumference;
+        const strokeDasharray = `${segmentLen} ${circumference - segmentLen}`;
+        const strokeDashoffset = -currentOffset;
+        currentOffset += segmentLen;
+
+        return `<circle cx="50" cy="50" r="${radius}" fill="none" stroke="${item.color}" stroke-width="14" stroke-dasharray="${strokeDasharray}" stroke-dashoffset="${strokeDashoffset}" style="transition: stroke-dasharray 0.5s ease;"></circle>`;
+      }).join("");
+
+      return `
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="${radius}" fill="none" stroke="var(--bg-tertiary)" stroke-width="14"></circle>
+          ${circles}
+        </svg>
+        <div class="donut-center-text">
+          <div class="donut-center-num">${totalCount}</div>
+          <div class="donut-center-lbl">Konten</div>
+        </div>
+      `;
+    }
+
+    // 1. RENDER DASHBOARD (DENGAN DONUT CHARTS)
+    function renderDashboard() {
+      const total = contentPlans.length;
+      const published = contentPlans.filter(c => c.Status === "Published").length;
+      const process = total - published;
+      const pct = total > 0 ? Math.round((published / total) * 100) : 0;
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-published').textContent = published;
+      document.getElementById('stat-process').textContent = process;
+      document.getElementById('stat-published-pct').textContent = `${pct}% dari total konten`;
+
+      const platCounts = {};
+      contentPlans.forEach(c => {
+        if (c.Platform) platCounts[c.Platform] = (platCounts[c.Platform] || 0) + 1;
+      });
+      let topPlat = "-";
+      let maxCount = 0;
+      Object.keys(platCounts).forEach(p => {
+        if (platCounts[p] > maxCount) { maxCount = platCounts[p]; topPlat = p; }
+      });
+      document.getElementById('stat-top-platform').textContent = topPlat;
+
+      // Platform Breakdown & Donut Render
+      const platColors = {
+        "Instagram": "#e1306c",
+        "TikTok": "#06b6d4",
+        "YouTube": "#ef4444",
+        "Shorts YouTube": "#f59e0b"
+      };
+      const platformsList = ["Instagram", "TikTok", "YouTube", "Shorts YouTube"];
+      const platChartItems = platformsList.map(plat => ({
+        label: plat,
+        count: platCounts[plat] || 0,
+        color: platColors[plat]
+      }));
+
+      document.getElementById('donut-platform').innerHTML = buildDonutChartHtml(platChartItems, total);
+
+      const platContainer = document.getElementById('platform-breakdown-container');
+      platContainer.innerHTML = platChartItems.map(item => {
+        const pPct = total > 0 ? Math.round((item.count / total) * 100) : 0;
+        return `
+          <div class="breakdown-item">
+            <div class="breakdown-info">
+              <span><span class="breakdown-legend-dot" style="background: ${item.color};"></span>${item.label}</span>
+              <span>${item.count} (${pPct}%)</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" style="width: ${pPct}%; background: ${item.color};"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Pillar Breakdown & Donut Render
+      const pillarColors = {
+        "Educational (Edukasi)": "#3b82f6",
+        "Entertaining (Hiburan)": "#10b981",
+        "Inspirational (Inspirasi)": "#8b5cf6",
+        "Promotional (Promosi)": "#f97316",
+        "Behind the Scene (BTS)": "#ec4899"
+      };
+      const pillarCounts = {};
+      contentPlans.forEach(c => {
+        if (c["Content Pillar"]) pillarCounts[c["Content Pillar"]] = (pillarCounts[c["Content Pillar"]] || 0) + 1;
+      });
+      const pillarChartItems = CONFIG.PILLARS.map(p => ({
+        label: p.value,
+        count: pillarCounts[p.value] || 0,
+        color: pillarColors[p.value] || "#3b82f6"
+      }));
+
+      document.getElementById('donut-pillar').innerHTML = buildDonutChartHtml(pillarChartItems, total);
+
+      const pillarContainer = document.getElementById('pillar-breakdown-container');
+      pillarContainer.innerHTML = pillarChartItems.map(item => {
+        const pPct = total > 0 ? Math.round((item.count / total) * 100) : 0;
+        return `
+          <div class="breakdown-item">
+            <div class="breakdown-info">
+              <span><span class="breakdown-legend-dot" style="background: ${item.color};"></span>${item.label}</span>
+              <span>${item.count} (${pPct}%)</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" style="width: ${pPct}%; background: ${item.color};"></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Recent Cards
+      const recentContainer = document.getElementById('dashboard-recent-cards');
+      const recentItems = contentPlans.slice(0, 4);
+      if (recentItems.length === 0) {
+        recentContainer.innerHTML = getEmptyStateHtml(2);
+      } else {
+        recentContainer.innerHTML = recentItems.map(c => buildCardHtml(c)).join("");
+      }
+    }
+
+    // 2. RENDER CONTENT PLAN (CARDS & TABLE)
+    function renderContentPlan() {
+      const q = document.getElementById('search-input').value.toLowerCase();
+      const fPlat = document.getElementById('filter-platform').value;
+      const fPillar = document.getElementById('filter-pillar').value;
+      const fStatus = document.getElementById('filter-status').value;
+      const fPic = document.getElementById('filter-pic').value;
+
+      const filtered = contentPlans.filter(c => {
+        const matchQ = !q || (
+          (c.Judul || "").toLowerCase().includes(q) ||
+          (c.Caption || "").toLowerCase().includes(q) ||
+          (c.PIC || "").toLowerCase().includes(q) ||
+          (c.Hashtag || "").toLowerCase().includes(q)
+        );
+        const matchPlat = fPlat === "ALL" || c.Platform === fPlat;
+        const matchPillar = fPillar === "ALL" || c["Content Pillar"] === fPillar;
+        const matchStatus = fStatus === "ALL" || c.Status === fStatus;
+        const matchPic = fPic === "ALL" || c.PIC === fPic;
+        return matchQ && matchPlat && matchPillar && matchStatus && matchPic;
+      });
+
+      document.getElementById('content-count-label').textContent = `Menampilkan ${filtered.length} dari ${contentPlans.length} konten`;
+
+      // Render Cards
+      const cardsCont = document.getElementById('content-cards-view');
+      if (filtered.length === 0) {
+        cardsCont.innerHTML = getEmptyStateHtml(2);
+      } else {
+        cardsCont.innerHTML = filtered.map(c => buildCardHtml(c)).join("");
+      }
+
+      // Render Table
+      const tbody = document.getElementById('content-table-body');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2.5rem 1rem;">Tidak ada data konten yang sesuai.</td></tr>`;
+      } else {
+        tbody.innerHTML = filtered.map(c => {
+          const st = CONFIG.STATUSES.find(s => s.value === c.Status) || { badgeClass: "status-idea" };
+          return `
+            <tr>
+              <td style="font-weight: 600; white-space: nowrap;">${c.Tanggal || "-"}</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">${c["Content Pillar"] || "-"}</div>
+                <span class="badge badge-pillar">${c.Value || "-"}</span>
+              </td>
+              <td><span class="pic-tag">${c.PIC || "-"}</span></td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem; line-height: 1.4;">${c.Judul || "-"}</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">${c.CTA ? 'CTA: ' + c.CTA : ''}</div>
+              </td>
+              <td><span class="badge">${c.Platform || "-"}</span></td>
+              <td><span class="status-badge ${st.badgeClass}">${c.Status || "-"}</span></td>
+              <td>${c["Link Publikasi"] ? `<a href="${c["Link Publikasi"]}" target="_blank" style="color:var(--primary); font-weight:600; text-decoration:underline; font-size:0.8rem;">Buka</a>` : '-'}</td>
+              <td>
+                <div class="card-actions">
+                  <button class="btn-card-action btn-edit-action" onclick="openModal('edit', '${c.ID}')" title="Edit Rencana Konten">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    <span>Edit</span>
+                  </button>
+                  <button class="btn-card-action btn-del-action" onclick="deleteContent('${c.ID}')" title="Hapus Rencana Konten">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    <span>Hapus</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      // Render Kanban with filtered data
+      renderKanban(filtered);
+    }
+
+    // Helper: Build Card HTML (Dengan Tombol Tindakan Prominent & Mudah Ditap)
+    function buildCardHtml(c) {
+      const st = CONFIG.STATUSES.find(s => s.value === c.Status) || { badgeClass: "status-idea" };
+      return `
+        <div class="content-card">
+          <div class="card-top">
+            <span class="card-date">${c.Tanggal || "Tanpa Tanggal"}</span>
+            <span class="status-badge ${st.badgeClass}">${c.Status || "-"}</span>
+          </div>
+          <h4 class="card-title">${c.Judul || "Tanpa Judul"}</h4>
+          ${c.Isi ? `<p class="card-desc">${c.Isi}</p>` : ''}
+          <div class="card-meta">
+            <span class="badge badge-pillar">${c["Content Pillar"] || "-"}</span>
+            <span class="badge badge-pillar">${c.Value || "-"}</span>
+            <span class="badge">${c.Platform || "-"}</span>
+          </div>
+          ${c["Link Publikasi"] ? `<div style="margin-top:0.35rem;"><a href="${c["Link Publikasi"]}" target="_blank" style="color:var(--primary); font-weight:600; font-size:0.85rem; display:inline-flex; align-items:center; gap:0.25rem;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:14px; height:14px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg> Lihat Publikasi</a></div>` : ''}
+          <div class="card-footer">
+            <span class="pic-tag">${c.PIC || "-"}</span>
+            <div class="card-actions">
+              <button class="btn-card-action btn-edit-action" onclick="openModal('edit', '${c.ID}')" title="Edit Rencana Konten">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                <span>Edit</span>
+              </button>
+              <button class="btn-card-action btn-del-action" onclick="deleteContent('${c.ID}')" title="Hapus Rencana Konten">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                <span>Hapus</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 3. RENDER KANBAN BOARD
+    function renderKanban(filteredPlans = contentPlans) {
+      const kanbanCont = document.getElementById('kanban-columns-container');
+      kanbanCont.innerHTML = CONFIG.STATUSES.map(s => {
+        const items = filteredPlans.filter(c => (c.Status || '').trim().toLowerCase() === (s.value || '').trim().toLowerCase());
+        return `
+          <div class="kanban-column">
+            <div class="kanban-col-header">
+              <span>${s.label}</span>
+              <span class="kanban-count">${items.length}</span>
+            </div>
+            <div class="kanban-items">
+              ${items.length === 0 ? `<div style="text-align:center; padding:1.5rem 0; font-size:0.78rem; color:var(--text-light);">Kosong</div>` : items.map(c => `
+                <div class="content-card" style="padding: 1.15rem; gap: 0.75rem;">
+                  <div class="card-top">
+                    <span class="card-date" style="font-size:0.75rem;">${c.Tanggal}</span>
+                    <span class="badge" style="font-size:0.7rem;">${c.Platform}</span>
+                  </div>
+                  <h5 style="font-size: 0.95rem; margin: 0; line-height: 1.4; color: var(--text-main); font-weight: 700;">${c.Judul}</h5>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.2rem; pt-3; border-top: 1px solid var(--border-color); padding-top: 0.65rem;">
+                    <span class="pic-tag" style="font-size:0.72rem; padding: 0.25rem 0.6rem;">${c.PIC}</span>
+                    <div class="card-actions">
+                      <button class="btn-card-action btn-edit-action" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;" onclick="openModal('edit', '${c.ID}')" title="Edit">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:13px; height:13px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                        <span>Edit</span>
+                      </button>
+                      <button class="btn-card-action btn-del-action" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;" onclick="deleteContent('${c.ID}')" title="Hapus">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:13px; height:13px;"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                      </button>
+                      ${c["Link Publikasi"] ? `<a href="${c["Link Publikasi"]}" target="_blank" class="btn-card-action" style="background:var(--bg-tertiary); color:var(--text-main); padding: 0.35rem 0.65rem; font-size: 0.75rem; border:1px solid var(--border-color); text-decoration:none;" title="Buka Link Publikasi">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:13px; height:13px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                      </a>` : ''}
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // 4. RENDER PELAPORAN (NEW VIEW)
+    function renderPelaporan() {
+      const filterPic = document.getElementById('filter-lapor-pic').value;
+      const filterBulan = document.getElementById('filter-lapor-bulan').value;
+      const filterSkp = document.getElementById('filter-lapor-skp').value;
+
+      // Filter logic
+      const filtered = contentPlans.filter(c => {
+        let matchPic = (filterPic === "Semua PIC" || c.PIC === filterPic);
+        let matchBulan = (filterBulan === "Semua Bulan" || c.Bulan === filterBulan);
+
+        let cSkp = c["SKP/KKN"] || "Lainnya";
+        if (cSkp === "-") cSkp = "Lainnya";
+        let matchSkp = (filterSkp === "Semua SKP" || cSkp === filterSkp);
+
+        return matchPic && matchBulan && matchSkp;
+      });
+
+      // Save filtered array to a global variable for PDF Printing
+      window.currentFilteredReport = filtered;
+
+      const tbody = document.getElementById('pelaporan-tbody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 20px;">Tidak ada data yang sesuai dengan filter.</td></tr>`;
+        return;
+      }
+
+      let html = "";
+      filtered.forEach(c => {
+        let btnEvidence = "-";
+        if (c["Link Publikasi"]) {
+          btnEvidence = `<a href="${c["Link Publikasi"]}" target="_blank" class="btn-primary" style="padding:4px 8px; font-size:11px; text-decoration:none;">Buka Link</a>`;
+        }
+
+        html += `
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px; font-size: 0.85rem;">${c.Tanggal || "-"}</td>
+            <td style="padding: 10px; font-size: 0.85rem;">${c.PIC || "-"}</td>
+            <td style="padding: 10px; font-size: 0.85rem;">${c.Bulan || "-"}</td>
+            <td style="padding: 10px; font-size: 0.85rem; font-weight:600;">${c["SKP/KKN"] || "-"}</td>
+            <td style="padding: 10px; font-size: 0.85rem;">
+              <strong>${c.Judul || "-"}</strong><br>
+              <span style="color: var(--text-muted); font-size:0.75rem;">${c.Isi || "-"}</span>
+            </td>
+            <td style="padding: 10px; text-align: center;">${btnEvidence}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    }
+    const modalCrud = document.getElementById('modal-crud');
+    window.openModal = function (mode, id = null) {
+      document.getElementById('form-crud').reset();
+      if (mode === 'add') {
+        document.getElementById('crud-modal-title').textContent = "Tambah Rencana Konten Baru";
+        document.getElementById('field-id').value = "";
+        document.getElementById('field-tanggal').value = "";
+        document.getElementById('field-platform').value = "Instagram";
+        document.getElementById('field-pillar').value = "Educational (Edukasi)";
+        document.getElementById('field-value').value = "Informasi";
+        document.getElementById('field-pic').value = "Marissa Fadhliya Rahmadiah";
+        document.getElementById('field-skp').value = "-";
+        document.getElementById('field-status').value = "Idea / Konsep";
+        document.getElementById('field-judul').value = "";
+        document.getElementById('field-isi').value = "";
+        document.getElementById('field-cta').value = "";
+        document.getElementById('field-hashtag').value = "";
+        document.getElementById('field-caption').value = "";
+        document.getElementById('field-link').value = "";
+        document.getElementById('group-link').style.display = 'none';
+      } else if (mode === 'edit' && id) {
+        document.getElementById('crud-modal-title').textContent = "Edit Rencana Konten";
+        const item = contentPlans.find(c => c.ID === id);
+        if (item) {
+          document.getElementById('field-id').value = item.ID || "";
+          document.getElementById('field-tanggal').value = item.Tanggal || "";
+          document.getElementById('field-platform').value = item.Platform || "Instagram";
+          document.getElementById('field-pillar').value = item["Content Pillar"] || "Educational (Edukasi)";
+          document.getElementById('field-value').value = item.Value || "Informasi";
+          document.getElementById('field-pic').value = item.PIC || "Marissa Fadhliya Rahmadiah";
+          document.getElementById('field-skp').value = item["SKP/KKN"] || "-";
+          document.getElementById('field-status').value = item.Status || "Idea / Konsep";
+          document.getElementById('field-judul').value = item.Judul || "";
+          document.getElementById('field-isi').value = item.Isi || "";
+          document.getElementById('field-cta').value = item.CTA || "";
+          document.getElementById('field-hashtag').value = item.Hashtag || "";
+          document.getElementById('field-caption').value = item.Caption || "";
+          document.getElementById('field-link').value = item["Link Publikasi"] || "";
+          document.getElementById('group-link').style.display = (item.Status === 'Published') ? 'flex' : 'none';
+        }
+      }
+      modalCrud.classList.add('active');
+    };
+
+    document.getElementById('btn-add-content').addEventListener('click', () => window.openModal('add'));
+    document.getElementById('btn-close-crud').addEventListener('click', () => modalCrud.classList.remove('active'));
+    document.getElementById('btn-cancel-crud').addEventListener('click', () => modalCrud.classList.remove('active'));
+
+    document.getElementById('field-status').addEventListener('change', function () {
+      document.getElementById('group-link').style.display = (this.value === 'Published') ? 'flex' : 'none';
+    });
+
+    // Submit CRUD Form (Tanpa Bar Loading, Ikon Refresh Berputar)
+    document.getElementById('form-crud').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('field-id').value;
+      const itemData = {
+        Tanggal: document.getElementById('field-tanggal').value,
+        Platform: document.getElementById('field-platform').value,
+        "Content Pillar": document.getElementById('field-pillar').value,
+        Value: document.getElementById('field-value').value,
+        PIC: document.getElementById('field-pic').value,
+        "SKP/KKN": document.getElementById('field-skp').value,
+        Status: document.getElementById('field-status').value,
+        Judul: document.getElementById('field-judul').value,
+        Isi: document.getElementById('field-isi').value,
+        CTA: document.getElementById('field-cta').value,
+        Hashtag: document.getElementById('field-hashtag').value,
+        Caption: document.getElementById('field-caption').value,
+        "Link Publikasi": document.getElementById('field-link').value
+      };
+
+      modalCrud.classList.remove('active');
+
+      // 1. OPTIMISTIC UI UPDATE
+      const isEdit = !!id;
+      if (isEdit) {
+        itemData.ID = id;
+        const idx = contentPlans.findIndex(c => c.ID === id);
+        if (idx !== -1) contentPlans[idx] = { ...contentPlans[idx], ...itemData };
+      } else {
+        itemData.ID = "CP-TEMP-" + new Date().getTime();
+        contentPlans.unshift(itemData);
+      }
+
+      renderDashboard();
+      renderContentPlan();
+      renderKanban();
+
+      // 2. BACKEND SYNC (Asinkron Tanpa Memblokir UI)
+      setRefreshLoading(true);
+      (async () => {
+        try {
+          if (isEdit) {
+            await api.updateContentPlan(itemData);
+          } else {
+            await api.createContentPlan(itemData);
+          }
+          // Fetch the real IDs and final data from server silently
+          await refreshData();
+        } catch (err) {
+          console.error("Gagal menyimpan data:", err.message);
+          showCustomDialog({
+            title: "Gagal Menyimpan",
+            message: "Terjadi kesalahan saat menyimpan ke server. Data akan dikembalikan ke kondisi semula.",
+            type: "confirm",
+            confirmText: "Tutup"
+          });
+          await refreshData(); // Revert ke state server
+        } finally {
+          setRefreshLoading(false);
+        }
+      })();
+    });
+
+    // Delete Content (Tanpa Bar Loading, Ikon Refresh Berputar)
+    window.deleteContent = async function (id) {
+      const confirmed = await showCustomDialog({
+        title: "Hapus Rencana Konten",
+        message: "Apakah Anda yakin ingin menghapus rencana konten ini secara permanen dari Google Sheets?",
+        type: "confirm",
+        confirmText: "Hapus",
+        confirmColor: "#ef4444"
+      });
+      if (confirmed) {
+        // 1. OPTIMISTIC UI UPDATE
+        const idx = contentPlans.findIndex(c => c.ID === id);
+        if (idx !== -1) {
+          contentPlans.splice(idx, 1);
+          renderDashboard();
+          renderContentPlan();
+          renderKanban();
+        }
+
+        // 2. BACKEND SYNC
+        setRefreshLoading(true);
+        (async () => {
+          try {
+            await api.deleteContentPlan(id);
+            await refreshData();
+          } catch (err) {
+            console.error("Gagal menghapus data:", err.message);
+            showCustomDialog({
+              title: "Gagal Menghapus",
+              message: "Terjadi kesalahan saat menghapus di server. Data akan dimuat ulang.",
+              type: "confirm",
+              confirmText: "Tutup"
+            });
+            await refreshData(); // Revert
+          } finally {
+            setRefreshLoading(false);
+          }
+        })();
+      }
+    };
+
+    // Tombol Ganti Bulan / Sheet Aktif
+    document.getElementById('btn-change-sheet').addEventListener('click', async () => {
+      const newSheet = await showCustomDialog({
+        title: "Ganti Bulan / Sheet",
+        message: "Masukkan nama Bulan atau Sheet yang ingin dibuka / dibuat (contoh: Agustus, September):",
+        type: "prompt",
+        inputValue: api.getSheetName(),
+        confirmText: "Simpan",
+        confirmColor: "var(--primary)"
+      });
+      if (newSheet && newSheet.trim() && newSheet.trim() !== api.getSheetName()) {
+        setRefreshLoading(true);
+        api.setSheetName(newSheet.trim());
+        if (api.isConfigured()) {
+          try {
+            await api.createNewSheet(newSheet.trim());
+          } catch (e) {
+            console.warn("Info pembuatan sheet:", e.message);
+          }
+        }
+        await refreshData();
+      }
+    });
+
+    // Theme Toggle (Default Dark Mode jika belum diatur)
+    const btnTheme = document.getElementById('btn-theme-toggle');
+    let savedTheme = localStorage.getItem(CONFIG.STORAGE_KEYS.THEME);
+    let isDark = savedTheme !== null ? savedTheme === 'dark' : true;
+
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+
+    btnTheme.addEventListener('click', () => {
+      isDark = !isDark;
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem(CONFIG.STORAGE_KEYS.THEME, 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem(CONFIG.STORAGE_KEYS.THEME, 'light');
+      }
+    });
+
+    // === CETAK LAPORAN ===
+    const modalPrint = document.getElementById('modal-print');
+
+    document.getElementById('btn-print-report').addEventListener('click', () => {
+      // Load saved values
+      const pNIM = localStorage.getItem('cp_humas_print_nim') || '';
+      const pProdi = localStorage.getItem('cp_humas_print_prodi') || '';
+      const pFak = localStorage.getItem('cp_humas_print_fak') || '';
+      const pPem = localStorage.getItem('cp_humas_print_pembimbing') || '';
+      const pPer = localStorage.getItem('cp_humas_print_periode') || `1 ${api.getSheetName()} s.d. 31 ${api.getSheetName()} 2026`;
+
+      document.getElementById('print-nim').value = pNIM;
+      document.getElementById('print-prodi').value = pProdi;
+      document.getElementById('print-fakultas').value = pFak;
+      document.getElementById('print-pembimbing').value = pPem;
+      document.getElementById('print-periode').value = pPer;
+
+      const filterPic = document.getElementById('filter-lapor-pic').value;
+      if (filterPic) document.getElementById('print-pic').value = filterPic;
+
+      modalPrint.classList.add('active');
+    });
+
+    document.getElementById('btn-close-print').addEventListener('click', () => modalPrint.classList.remove('active'));
+    document.getElementById('btn-cancel-print').addEventListener('click', () => modalPrint.classList.remove('active'));
+
+    document.getElementById('form-print').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const pic = document.getElementById('print-pic').value;
+      const nim = document.getElementById('print-nim').value;
+      const prodi = document.getElementById('print-prodi').value;
+      const fak = document.getElementById('print-fakultas').value;
+      const pemb = document.getElementById('print-pembimbing').value;
+      const periode = document.getElementById('print-periode').value;
+
+      // Save to localStorage for convenience
+      localStorage.setItem('cp_humas_print_nim', nim);
+      localStorage.setItem('cp_humas_print_prodi', prodi);
+      localStorage.setItem('cp_humas_print_fak', fak);
+      localStorage.setItem('cp_humas_print_pembimbing', pemb);
+      localStorage.setItem('cp_humas_print_periode', periode);
+
+      modalPrint.classList.remove('active');
+
+      generateAndPrintReport(pic, nim, prodi, fak, pemb, periode);
+    });
+
+    function generateAndPrintReport(pic, nim, prodi, fak, pemb, periode) {
+      const displayPic = pic === 'Semua PIC' ? 'Seluruh Relawan (Kompilasi)' : pic;
+
+      document.getElementById('out-nama').textContent = displayPic;
+      document.getElementById('out-nim').textContent = nim;
+      document.getElementById('out-prodi').textContent = prodi;
+      document.getElementById('out-fakultas').textContent = fak;
+      document.getElementById('out-periode').textContent = periode;
+
+      // Signatures
+      document.getElementById('out-ttd-nama').textContent = displayPic;
+      document.getElementById('out-ttd-nim').textContent = nim;
+      document.getElementById('out-pembimbing').textContent = pemb || "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0";
+      // Generate data table
+      const filtered = window.currentFilteredReport || [];
+      const tbody = document.querySelector('#print-data-table tbody');
+
+      if (filtered.length === 0) {
+        showCustomDialog({
+          title: "Informasi",
+          message: "Data kosong! Silakan pastikan ada data pada tabel sebelum mencetak.",
+          confirmText: "Mengerti"
+        });
+        return;
+      }
+
+
+      let html = "";
+      filtered.forEach((c, idx) => {
+        let skp = (c["SKP/KKN"] && c["SKP/KKN"] !== "-") ? c["SKP/KKN"] : "Tugas Lainnya";
+        let taskDesc = `<strong>${c.Judul || "-"}</strong>`;
+        if (c.Isi) taskDesc += `<br><span style="font-size:10px; color:#555;">${c.Isi}</span>`;
+
+        let evidenceText = "-";
+        if (c["Link Publikasi"]) {
+          evidenceText = `<a href="${c["Link Publikasi"]}" style="color:blue; text-decoration:underline;">Tautan Evidence</a>`;
+        }
+
+        html += `
+          <tr>
+            <td>${idx + 1}</td>
+            <td style="white-space:nowrap;">${c.Tanggal || "-"}</td>
+            <td><strong>${skp}</strong></td>
+            <td style="text-align:left; padding-left:10px;">${taskDesc}</td>
+            <td>${evidenceText}</td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+
+      // Panggil dialog cetak bawaan browser
+      setTimeout(() => {
+        window.print();
+      }, 300); // Sedikit delay agar DOM siap
+    }
+
+    // Inisialisasi awal
+    refreshData();
+  </script>
+</body>
+
+</html>
