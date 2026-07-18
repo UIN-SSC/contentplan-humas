@@ -1,0 +1,14 @@
+# MacOS
+.DS_Store
+
+# Temporary files
+brace_depth.txt
+check_js.sh
+extracted.js
+test.js
+test_jsc.sh
+
+# IDEs and Editors
+.vscode/
+.idea/
+
