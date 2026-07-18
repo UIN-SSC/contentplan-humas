@@ -2974,8 +2974,23 @@
       const filterBulan = document.getElementById('filter-lapor-bulan').value;
       const filterSkp = document.getElementById('filter-lapor-skp').value;
 
+      // Helper untuk mendapatkan nama bulan dari format YYYY-MM-DD
+      const getBulanFromTanggal = (tanggal) => {
+        if (!tanggal) return "-";
+        const parts = tanggal.split('-');
+        if (parts.length >= 2) {
+          const monthIndex = parseInt(parts[1], 10) - 1;
+          const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+          if (monthIndex >= 0 && monthIndex < 12) return months[monthIndex];
+        }
+        return "-";
+      };
+
       // Filter logic
       const filtered = contentPlans.filter(c => {
+        // Otomatis ekstrak Bulan dari Tanggal jika kosong atau untuk memastikan filter berfungsi
+        c.Bulan = getBulanFromTanggal(c.Tanggal);
+
         let matchPic = (filterPic === "Semua PIC" || c.PIC === filterPic);
         let matchBulan = (filterBulan === "Semua Bulan" || c.Bulan === filterBulan);
 
